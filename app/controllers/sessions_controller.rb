@@ -1,13 +1,16 @@
 class SessionsController < ApplicationController
-  def new
-  end
+    def new
+    end
 
-  def create
-  end
+    def create
+    end
 
-  def login
-  end
+    def destroy
+    end
 
-  def welcome
-  end
+    def login
+    end
+
+    def welcome
+    end
 end
