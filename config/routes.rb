@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+    root to: 'sessions#welcome'
 
     resources :users, only: [:create]
 
@@ -7,5 +8,4 @@ Rails.application.routes.draw do
     post 'login', to: 'sessions#create'
     get 'logout', to: 'sessions#destroy'
 
-    root to: 'sessions#welcome'
 end
