@@ -1,4 +1,10 @@
 <h1>Welcome to Game-Tracker!</h1>
 
-<%= button_to "Log In", '/login', method: :get %>
-<%= button_to "Sign Up", '/signup', method: :get %>
+<% if logged_in? %>
+
+<% else %>
+
+    <%= button_to "Log In", '/login', method: :get %>
+    <%= button_to "Sign Up", '/signup', method: :get %>
+
+<% end %>
