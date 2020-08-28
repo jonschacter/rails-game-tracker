@@ -5,6 +5,10 @@
 <%= link_to "Delete Game", game_path(@game), :data => { :confirm => "This will delete any associated sessions of this game. Are you sure?" }, :method => :delete %><br>
 
 <h1>Sessions</h1>
+<h3>
+    My Winrate: 
+    <%= @game.my_winrate == "N/A" ? "N/A" : @game.my_winrate %>
+</h3>
 <% @game.game_sessions.each do |sess| %>
     <h3><%= sess.format_date %></h3>
     <% sess.players.each do |player| %>
