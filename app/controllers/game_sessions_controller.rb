@@ -4,6 +4,11 @@ class GameSessionsController < ApplicationController
     end
         
     def show
+        @game_session = GameSession.find_by(id: params[:id])
+        @game = Game.find_by(id: params[:game_id])
+        if @game_session.user != current_user || @game_session.game != @game
+            redirect_to game_sessions_path
+        end
     end
 
     def new
