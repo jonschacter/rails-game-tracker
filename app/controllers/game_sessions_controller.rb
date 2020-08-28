@@ -58,5 +58,9 @@ class GameSessionsController < ApplicationController
     end
 
     def destroy
+        game_session = GameSession.find_by(id: params[:id])
+        game_session.delete
+
+        redirect_to game_sessions_path
     end
 end
