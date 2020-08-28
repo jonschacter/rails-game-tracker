@@ -1,0 +1,11 @@
+<h1><%= link_to @game.name, game_path(@game) %></h1>
+<h3><%= @game_session.format_date %></h3>
+<% @game_session.players.each do |player| %>
+        <p>
+            <%= player.name == "Current User" ? "Me" : player.name %>
+            <% if @game_session.winner.include?(player) %>
+                - WINNER!
+            <% end %>
+        </p>
+<% end %>
+
