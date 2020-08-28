@@ -2,7 +2,9 @@ Rails.application.routes.draw do
     root to: 'sessions#welcome'
 
     resources :users, only: [:create]
-    resources :games
+    resources :games do
+        resources :game_sessions, only: [:show, :new, :create, :edit, :update, :destroy]
+    end
 
     get 'signup', to: 'users#new'
     get 'login', to: 'sessions#new'
