@@ -1,7 +1,7 @@
 <h1>My Sessions</h1>
 
 <% @game_sessions.each do |sess| %>
-    <h3><%= link_to "#{sess.game.name}", game_game_session_path(sess.game, sess) %></h3>
+    <h3><%= link_to "#{sess.game.name} - #{sess.format_date}", game_game_session_path(sess.game, sess) %></h3>
     <% sess.players.each do |player| %>
         <p>
             <%= player.name == "Current User" ? "Me" : player.name %>
@@ -12,4 +12,5 @@
     <% end %>
 <% end %>
 <br>
+
 <%= link_to "Home", root_path %>
