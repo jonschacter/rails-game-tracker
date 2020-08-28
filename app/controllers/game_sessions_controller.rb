@@ -1,4 +1,7 @@
 class GameSessionsController < ApplicationController
+    def index
+    end
+        
     def show
     end
 

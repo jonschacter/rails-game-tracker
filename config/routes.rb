@@ -3,7 +3,7 @@ Rails.application.routes.draw do
 
     resources :users, only: [:create]
     resources :games do
-        resources :game_sessions, only: [:show, :new, :create, :edit, :update, :destroy]
+        resources :game_sessions
     end
 
     get 'signup', to: 'users#new'
