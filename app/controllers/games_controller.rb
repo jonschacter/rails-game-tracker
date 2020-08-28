@@ -49,6 +49,9 @@ class GamesController < ApplicationController
     end
 
     def destroy
+        game = Game.find_by(id: params[:id])
+        game.delete
+        redirect_to games_path
     end
 
     private
