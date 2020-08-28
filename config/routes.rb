@@ -5,7 +5,7 @@ Rails.application.routes.draw do
     resources :games do
         resources :game_sessions, only: [:show, :new, :create, :edit, :update, :destroy]
     end
-    resources :game_sessions, only: [:index]
+    resources :game_sessions, only: [:index, :new]
 
     get 'signup', to: 'users#new'
     get 'login', to: 'sessions#new'
