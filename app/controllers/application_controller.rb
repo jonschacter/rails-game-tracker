@@ -11,6 +11,10 @@ class ApplicationController < ActionController::Base
         !current_user.nil?
     end
 
+    def matching_user?(obj)
+        obj.user == current_user
+    end
+
     def authorized
         redirect_to '/' unless logged_in?
     end
