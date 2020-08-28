@@ -4,6 +4,15 @@ class GameSession < ApplicationRecord
     has_many :game_sessions_players
     has_many :players, through: :game_sessions_players
 
+    def format_date
+        all_months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]
+        datearray = self.date.split("-")
+        year = datearray[0]
+        month = all_months[datearray[1].to_i - 1]
+        day = datearray[2].to_i.to_s
+        "#{month} #{day}, #{year}"
+    end
+    
     def winner=(player_array)
         self.reset_winners
         player_array.each do |player|
