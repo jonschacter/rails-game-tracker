@@ -1,2 +1,5 @@
 <h1><%= @game.name %></h1>
 <p>Type: <%= @game.gametype %></p>
+
+<%= link_to "Delete Game", game_path(@game), :data => { :confirm => "This will delete any associated sessions of this game. Are you sure?" }, :method => :delete %><br>
+<%= link_to "Back to My Games", games_path %>
