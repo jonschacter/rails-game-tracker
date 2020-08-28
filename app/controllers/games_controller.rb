@@ -1,5 +1,25 @@
 class GamesController < ApplicationController
     def index
+        @games = current_user.games
+        @boardgames = []
+        @videogames = []
+        @cardgames = []
+        @dicegames = []
+        @othergames = []
+        @games.each do |game|
+            case game.gametype
+            when "Board"
+                @boardgames << game
+            when "Video"
+                @videogames << game
+            when "Card"
+                @cardgames << game
+            when "Dice"
+                @dicegames << game
+            else
+                @othergames << game
+            end
+        end
     end
 
     def show
