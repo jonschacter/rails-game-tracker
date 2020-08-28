@@ -12,6 +12,8 @@ class GameSessionsController < ApplicationController
     end
 
     def new
+        @game_session = GameSession.new
+        @games = current_user.games
     end
 
     def create
