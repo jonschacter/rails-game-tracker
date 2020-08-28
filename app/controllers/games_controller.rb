@@ -25,7 +25,7 @@ class GamesController < ApplicationController
     def show
         @game = Game.find_by(id: params[:id])
         if matching_user?(@game)
-           
+            
         else
             redirect_to games_path
         end
