@@ -1,3 +1,39 @@
 <h1>My Games</h1>
 
+<% if !@boardgames.empty? %>
+    <h3>Board Games</h3>
+    <% @boardgames.each do |game| %>
+        <%= link_to game.name, game_path(game) %><br>
+    <% end %>
+<% end %>
+
+<% if !@videogames.empty? %>
+    <h3>Video Games</h3>
+    <% @videogames.each do |game| %>
+        <%= link_to game.name, game_path(game) %><br>
+    <% end %>
+<% end %>
+
+<% if !@cardgames.empty? %>
+    <h3>Card Games</h3>
+    <% @cardgames.each do |game| %>
+        <%= link_to game.name, game_path(game) %><br>
+    <% end %>
+<% end %>
+
+<% if !@dicegames.empty? %>
+    <h3>Dice Games</h3>
+    <% @dicegames.each do |game| %>
+        <%= link_to game.name, game_path(game) %><br>
+    <% end %>
+<% end %>
+
+<% if !@othergames.empty? %>
+    <h3>Other Games</h3>
+    <% @othergames.each do |game| %>
+        <%= link_to game.name, game_path(game) %><br>
+    <% end %>
+<% end %>
+
+<br>
 <%= link_to "Home", root_path %>
