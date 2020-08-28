@@ -1,2 +1,2 @@
-module GameSessionHelper
+module GameSessionsHelper
 end
