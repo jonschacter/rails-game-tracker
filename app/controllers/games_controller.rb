@@ -25,7 +25,7 @@ class GamesController < ApplicationController
     def show
         @game = Game.find_by(id: params[:id])
         if matching_user?(@game)
-            
+           
         else
             redirect_to games_path
         end
@@ -43,9 +43,18 @@ class GamesController < ApplicationController
     end
 
     def edit
+        @game = Game.find_by(id: params[:id])
+        if matching_user?(@game)
+            
+        else
+            redirect_to games_path
+        end
     end
 
     def update
+        game = Game.find_by(id: params[:id])
+        game.update(game_params)
+        redirect_to game_path(game)
     end
 
     def destroy
