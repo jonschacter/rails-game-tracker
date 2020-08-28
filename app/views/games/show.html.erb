@@ -1,5 +1,28 @@
 <h1><%= @game.name %></h1>
 <p>Type: <%= @game.gametype %></p>
 
+<%= link_to "Edit Game", edit_game_path(@game) %><br>
 <%= link_to "Delete Game", game_path(@game), :data => { :confirm => "This will delete any associated sessions of this game. Are you sure?" }, :method => :delete %><br>
+
+<h1>Sessions</h1>
+<% @game.game_sessions.each do |sess| %>
+    <h3><%= sess.format_date %></h3>
+    <% sess.players.each do |player| %>
+        <% if player.name == "Current User" %>
+            <p>
+                Me
+                <% if sess.winner.include?(player) %>
+                 - WINNER!
+                <% end %>
+            </p>
+        <% else %>
+            <p>
+                <%= player.name %>
+                <% if sess.winner.include?(player) %>
+                 - WINNER!
+                <% end %>
+            </p>
+        <% end %>
+    <% end %>
+<% end %><br>
 <%= link_to "Back to My Games", games_path %>
