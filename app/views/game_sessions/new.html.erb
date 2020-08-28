@@ -1,0 +1,36 @@
+<h1>Log a New Session</h1>
+
+<form action="/gamesessions/new" method="POST">
+    <label for="date">Date (YYYY-MM-DD): </label>
+    <input type="text" id="date" name="game_session[date]"><br>
+    <h3>Game Info</h3>
+    <label for="game_dropdown">New or Existing Game?</label>
+    <select id="game_dropdown" name="game[name]">
+        <option value="New" selected>New</option>
+        <% @games.each do |game| %>
+            <option value="<%= game.name %>"><%= game.name %></option>
+        <% end %>
+    </select><br>
+    <label for="new_game_name">Game Name (if New):</label>
+    <input type="text" id="new_game_name" name="new_game[name]"><br>
+    <label for="type">Game Type (if New):</label>
+    <select id="type" name="new_game[type]">
+        <option value="Board">Board</option>
+        <option value="Video">Video</option>
+        <option value="Card">Card</option>
+        <option value="Dice">Dice</option>
+        <option value="Other" selected>Other</option>
+    </select><br>
+    <h3>Player Info</h3>
+    <p>Player Names: (Use "Me" for yourself)</p>
+    <input type="text" name="game_session[players][]" value="Me"> Winner? <input type="checkbox" name="game_session[winners][]" value="1"><br>
+    <input type="text" name="game_session[players][]" placeholder="Player 2"> Winner? <input type="checkbox" name="game_session[winners][]" value="2"><br>
+    <input type="text" name="game_session[players][]" placeholder="Player 3"> Winner? <input type="checkbox" name="game_session[winners][]" value="3"><br>
+    <input type="text" name="game_session[players][]" placeholder="Player 4"> Winner? <input type="checkbox" name="game_session[winners][]" value="4"><br>
+    <input type="text" name="game_session[players][]" placeholder="Player 5"> Winner? <input type="checkbox" name="game_session[winners][]" value="5"><br>
+    <input type="text" name="game_session[players][]" placeholder="Player 6"> Winner? <input type="checkbox" name="game_session[winners][]" value="6"><br>
+    <input type="text" name="game_session[players][]" placeholder="Player 7"> Winner? <input type="checkbox" name="game_session[winners][]" value="7"><br>
+    <input type="text" name="game_session[players][]" placeholder="Player 8"> Winner? <input type="checkbox" name="game_session[winners][]" value="8"><br>
+
+    <input type="submit" value="Create Session">
+</form>
