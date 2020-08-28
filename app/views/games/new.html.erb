@@ -1,0 +1,8 @@
+<h1>New Game</h1>
+<%= form_for @game do |f| %>
+    <%= f.label :name %>
+    <%= f.text_field :name %><br>
+    <%= f.label :gametype, "Type" %>
+    <%= f.select(:gametype, ["Board", "Video", "Card", "Dice", "Other"]) %><br>
+    <%= f.submit %>
+<% end %>
