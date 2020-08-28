@@ -2,7 +2,8 @@
 
 <% if logged_in? %>
 
-    <%= link_to "View My Games", games_path %><br><br>
+    <%= link_to "View My Games", games_path %><br>
+    <%= link_to "View My Sessions", game_sessions_path %><br><br>
     <%= button_to "Log Out", '/logout', method: :get %>
 
 <% else %>
