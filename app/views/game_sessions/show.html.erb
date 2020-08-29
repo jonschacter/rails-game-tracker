@@ -9,5 +9,7 @@
         </p>
 <% end %>
 <%= link_to "Edit Session", edit_game_game_session_path(@game, @game_session) %><br>
-<%= link_to "Delete Session", game_game_session_path(@game, @game_session), method: :delete %>
+<%= link_to "Delete Session", game_game_session_path(@game, @game_session), method: :delete %><br><br>
+
+<%= link_to "Back to My Sessions", game_sessions_path %>
 
