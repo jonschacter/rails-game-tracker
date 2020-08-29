@@ -52,6 +52,13 @@ class GameSessionsController < ApplicationController
     end
 
     def edit
+        @game_session = GameSession.find_by(id: params[:id])
+        @game = Game.find_by(id: params[:game_id])
+        @games = current_user.games
+        @players = @game_session.players
+        if @game_session.user != current_user || @game_session.game != @game
+            redirect_to game_sessions_path
+        end
     end
 
     def update
