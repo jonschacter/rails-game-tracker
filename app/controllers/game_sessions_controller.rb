@@ -13,17 +13,30 @@ class GameSessionsController < ApplicationController
 
     def new
         @game_session = GameSession.new
+        if params[:game_id]
+            @game = Game.find_by(id: params[:game_id])
+            if !@game || @game.user != current_user
+                redirect_to games_path
+            end
+        end
         @games = current_user.games
     end
 
     def create
         # find or create game
-        if params[:game_session][:game] == "New"
-            game = Game.new(name: params[:new_game_name], gametype: params[:new_game_type])
-            game.user = current_user
-            game.save
+        if params[:game_session][:game_id]
+            game = Game.find_by(id: params[:game_session][:game_id])
+            if !game || game.user != current_user
+                redirect_to games_path
+            end
         else
-            game = Game.find_by(name: params[:game_session][:game], user_id: current_user.id)
+            if params[:game_session][:game] == "New"
+                game = Game.new(name: params[:new_game_name], gametype: params[:new_game_type])
+                game.user = current_user
+                game.save
+            else
+                game = Game.find_by(name: params[:game_session][:game], user_id: current_user.id)
+            end
         end
         # find or create players
         players = []
