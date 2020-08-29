@@ -1,0 +1,28 @@
+<h1>Edit Session</h1>
+
+<%= form_for [@game, @game_session] do |f| %>
+    <%= f.label :date, "Date (YYYY-MM-DD): " %>
+    <%= f.text_field :date %>
+
+    <h3>Game Info</h3>
+    <%= f.label :game, "New or Existing Game?" %>
+    <%= f.select :game, options_for_select(["New", *@games.map{|game| game.name}], selected = @game.name ) %><br>
+    
+    <%= label_tag :new_game_name, "Name (if New): "%>
+    <%= text_field_tag :new_game_name %><br>
+    <%= label_tag :new_game_type, "Type (if New): "%>
+    <%= select_tag :new_game_type, options_for_select(["Board", "Video", "Card", "Dice", "Other"]) %><br>
+
+    <h3>Player Info</h3>
+    <p>Player Names: (Use "Me" for yourself)</p>
+    <%= text_field_tag "game_session[players][]", "Me" %> Winner? <%= check_box_tag "game_session[winners][]", "1", @game_session.winner.include?(@players[0]) ? "checked = true" : nil %><br>
+    <%= text_field_tag "game_session[players][]", @players[1] ? @players[1].name : nil, placeholder: "Player 2" %> Winner? <%= check_box_tag "game_session[winners][]", "2", @game_session.winner.include?(@players[1]) ? "checked = true" : nil %><br>
+    <%= text_field_tag "game_session[players][]", @players[2] ? @players[2].name : nil, placeholder: "Player 3" %> Winner? <%= check_box_tag "game_session[winners][]", "3", @game_session.winner.include?(@players[2]) ? "checked = true" : nil %><br>
+    <%= text_field_tag "game_session[players][]", @players[3] ? @players[3].name : nil, placeholder: "Player 4" %> Winner? <%= check_box_tag "game_session[winners][]", "4", @game_session.winner.include?(@players[3]) ? "checked = true" : nil %><br>
+    <%= text_field_tag "game_session[players][]", @players[4] ? @players[4].name : nil, placeholder: "Player 5" %> Winner? <%= check_box_tag "game_session[winners][]", "5", @game_session.winner.include?(@players[4]) ? "checked = true" : nil %><br>
+    <%= text_field_tag "game_session[players][]", @players[5] ? @players[5].name : nil, placeholder: "Player 6" %> Winner? <%= check_box_tag "game_session[winners][]", "6", @game_session.winner.include?(@players[5]) ? "checked = true" : nil %><br>
+    <%= text_field_tag "game_session[players][]", @players[6] ? @players[6].name : nil, placeholder: "Player 7" %> Winner? <%= check_box_tag "game_session[winners][]", "7", @game_session.winner.include?(@players[6]) ? "checked = true" : nil %><br>
+    <%= text_field_tag "game_session[players][]", @players[7] ? @players[7].name : nil, placeholder: "Player 8" %> Winner? <%= check_box_tag "game_session[winners][]", "8", @game_session.winner.include?(@players[7]) ? "checked = true" : nil %><br><br>
+    
+    <%= f.submit "Update Session" %>
+<% end %>
