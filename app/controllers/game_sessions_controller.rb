@@ -62,6 +62,39 @@ class GameSessionsController < ApplicationController
     end
 
     def update
+        # find or create game
+        if params[:game_session][:game] == "New"
+            game = Game.new(name: params[:new_game_name], gametype: params[:new_game_type])
+            game.user = current_user
+            game.save
+        else
+            game = Game.find_by(name: params[:game_session][:game], user_id: current_user.id)
+        end
+        # find or create players
+        players = []
+        params[:game_session][:players].each do |player|
+            if player == "Me"
+                players << Player.find_or_create_by(name: "Current User")
+            elsif player != ""
+                players << Player.find_or_create_by(name: player)
+            end
+        end
+        # add winners
+        winners = []
+        if params[:game_session][:winners]
+            params[:game_session][:winners].each do |winner_num|
+                winners << players[winner_num.to_i - 1]
+            end
+        end
+        # find and update game session
+        game_session = GameSession.find_by(id: params[:id])
+        game_session.date = params[:game_session][:date]
+        game_session.game = game
+        game_session.players = players
+        game_session.save
+        game_session.winner = winners
+
+        redirect_to game_game_session_path(game, game_session)
     end
 
     def destroy
