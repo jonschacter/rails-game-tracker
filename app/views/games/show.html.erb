@@ -3,31 +3,29 @@
 
 <%= link_to "Edit Game", edit_game_path(@game) %><br>
 <%= link_to "Delete Game", game_path(@game), :data => { :confirm => "This will delete any associated sessions of this game. Are you sure?" }, :method => :delete %><br>
+<%= link_to "Add Session", new_game_game_session_path(@game) %><br><br>
 
-<h1>Sessions</h1>
-<h3>
-    My Winrate: 
-    <%= @game.my_winrate == "N/A" ? "N/A" : @game.my_winrate %>
-</h3>
-<% @game.game_sessions.each do |sess| %>
-    <h3><%= sess.format_date %></h3>
-    <% sess.players.each do |player| %>
-        <% if player.name == "Current User" %>
-            <p>
-                Me
-                <% if sess.winner.include?(player) %>
-                 - WINNER!
-                <% end %>
-            </p>
-        <% else %>
-            <p>
-                <%= player.name %>
-                <% if sess.winner.include?(player) %>
-                 - WINNER!
-                <% end %>
-            </p>
+<% if !@game.game_sessions.empty? %>
+    <h3>Sessions</h3>
+    <p>My Winrate: <%= @game.my_winrate == "N/A" ? "N/A" : @game.my_winrate %></p>
+    <% @game.game_sessions.each do |sess| %>
+        <h5><%= link_to sess.format_date, game_game_session_path(@game, sess) %></h5>
+        <% sess.players.each do |player| %>
+            <% if player.name == "Current User" %>
+                <p>
+                    Me
+                    <% if sess.winner.include?(player) %>
+                    - WINNER!
+                    <% end %>
+                </p>
+            <% else %>
+                <p>
+                    <%= player.name %>
+                    <% if sess.winner.include?(player) %>
+                    - WINNER!
+                    <% end %>
+                </p>
+            <% end %>
         <% end %>
     <% end %>
-<% end %><br>
-<%= link_to "Add Session", new_game_game_session_path(@game) %><br>
-<%= link_to "Back to My Games", games_path %>
+<% end %>

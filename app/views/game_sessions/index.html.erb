@@ -1,17 +1,17 @@
 <h1>My Sessions</h1>
 
+<%= link_to "Add a Session", new_game_session_path %><br><br>
+
 <% @game_sessions.each do |sess| %>
-    <h3><%= link_to "#{sess.game.name} - #{sess.format_date}", game_game_session_path(sess.game, sess) %></h3>
+    <h4><%= link_to "#{sess.game.name} - #{sess.format_date}", game_game_session_path(sess.game, sess) %></h4>
+    <ul>
     <% sess.players.each do |player| %>
-        <p>
+        <li>
             <%= player.name == "Current User" ? "Me" : player.name %>
             <% if sess.winner.include?(player) %>
                 - WINNER!
             <% end %>
-        </p>
+        </li>
     <% end %>
+    </ul>
 <% end %>
-<br>
-
-<%= link_to "Add a Session", new_game_session_path %><br>
-<%= link_to "Home", root_path %>
