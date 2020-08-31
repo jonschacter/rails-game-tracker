@@ -1,40 +1,49 @@
-<h1>My Games</h1>
+<h1>My Games</h2>
+
+<%= link_to "Add New Game", new_game_path %><br>
 
 <% if !@boardgames.empty? %>
-    <h3>Board Games</h3>
-    <% @boardgames.each do |game| %>
-        <%= link_to game.name, game_path(game) %><br>
-    <% end %>
+    <h5>Board Games</h4>
+    <ul>
+        <% @boardgames.each do |game| %>
+            <li><%= link_to game.name, game_path(game) %></li>
+        <% end %>
+    </ul>
 <% end %>
 
 <% if !@videogames.empty? %>
-    <h3>Video Games</h3>
-    <% @videogames.each do |game| %>
-        <%= link_to game.name, game_path(game) %><br>
-    <% end %>
+    <h5>Video Games</h5>
+    <ul>
+        <% @videogames.each do |game| %>
+            <li><%= link_to game.name, game_path(game) %></li>
+        <% end %>
+    </ul>
 <% end %>
 
 <% if !@cardgames.empty? %>
-    <h3>Card Games</h3>
-    <% @cardgames.each do |game| %>
-        <%= link_to game.name, game_path(game) %><br>
-    <% end %>
+    <h5>Card Games</h5>
+    <ul>
+        <% @cardgames.each do |game| %>
+            <li><%= link_to game.name, game_path(game) %></li>
+        <% end %>
+    </ul>
 <% end %>
 
 <% if !@dicegames.empty? %>
-    <h3>Dice Games</h3>
-    <% @dicegames.each do |game| %>
-        <%= link_to game.name, game_path(game) %><br>
-    <% end %>
+    <h5>Dice Games</h5>
+    <ul>
+        <% @dicegames.each do |game| %>
+            <li><%= link_to game.name, game_path(game) %></li>
+        <% end %>
+    </ul>
+    
 <% end %>
 
 <% if !@othergames.empty? %>
-    <h3>Other Games</h3>
-    <% @othergames.each do |game| %>
-        <%= link_to game.name, game_path(game) %><br>
-    <% end %>
+    <h5>Other Games</h5>
+    <ul>
+        <% @othergames.each do |game| %>
+            <li><%= link_to game.name, game_path(game) %></li>
+        <% end %>
+    </ul>
 <% end %>
-
-<br>
-<%= link_to "Add Game", new_game_path %><br>
-<%= link_to "Home", root_path %>
