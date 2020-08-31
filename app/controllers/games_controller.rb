@@ -1,11 +1,7 @@
 class GamesController < ApplicationController
     def index
         @games = current_user.games
-        @boardgames = []
-        @videogames = []
-        @cardgames = []
-        @dicegames = []
-        @othergames = []
+        @boardgames, @videogames, @cardgames, @dicegames, @othergames = [],[],[],[],[]
         @games.each do |game|
             case game.gametype
             when "Board"
@@ -24,9 +20,7 @@ class GamesController < ApplicationController
 
     def show
         @game = Game.find_by(id: params[:id])
-        if matching_user?(@game)
-            
-        else
+        if !matching_user?(@game)
             redirect_to games_path
         end
     end
@@ -44,9 +38,7 @@ class GamesController < ApplicationController
 
     def edit
         @game = Game.find_by(id: params[:id])
-        if matching_user?(@game)
-            
-        else
+        if !matching_user?(@game)
             redirect_to games_path
         end
     end

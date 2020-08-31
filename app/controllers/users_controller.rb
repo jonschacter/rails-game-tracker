@@ -9,9 +9,9 @@ class UsersController < ApplicationController
         @user = User.create(user_params)
         if @user
             session[:user_id] = @user.id
-            redirect_to '/'
+            redirect_to root_path
         else
-            redirect_to '/signup'
+            redirect_to signup_path
         end
     end
 
