@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>RailsGameTracker</title>
+    <title>Game Tracker</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
@@ -10,6 +10,39 @@
   </head>
 
   <body>
-    <%= yield %>
+    <div class="jumbotron jumbotron-fluid">
+        <div class="container">
+            <h1>Welcome to Game-Tracker!</h1>
+            <p>A tool to manage your game collection and log play sessions.</p>
+            <nav class="navbar navbar-expand-sm">
+            <ul class="navbar-nav">
+                <% if logged_in? %>
+                    <li class="nav-item">
+                        <%= link_to "My Games", games_path, :class => "nav-link" %>
+                    </li>
+                    <li class="nav-item">
+                        <%= link_to "My Sessions", game_sessions_path, :class => "nav-link" %>
+                    </li>
+                    <li class="nav-item">
+                        <%= link_to "Log Out", logout_path, :class => "nav-link" %>
+                    </li>
+                <% else %>
+                    <li class="nav-item">
+                        <%= link_to "Log In", login_path, :class => "nav-link" %>
+                    </li>
+                    <li class="nav-item">
+                        <%= link_to "Log In with Google", '/auth/google_oauth2', :class => "nav-link" %>
+                    </li>
+                    <li class="nav-item">
+                        <%= link_to "Sign Up", signup_path, :class => "nav-link" %>
+                    </li>
+                <% end %>
+            </ul>
+        </nav>
+        </div>
+    </div>
+    <div class="container">
+        <%= yield %>
+    </div>
   </body>
 </html>
