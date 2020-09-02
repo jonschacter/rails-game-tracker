@@ -16,6 +16,10 @@ Launch the local host with:
 
 And navigate your browser to localhost:3000 as instructed.
 
+## Video Walkthrough
+
+https://youtu.be/PNJHsdRJG8U
+
 ## Contributing
 
 Bug reports and pull requests are welcome on GitHub at https://github.com/jonschacter/rails-game-tracker
