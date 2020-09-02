@@ -1,24 +1,25 @@
-# README
+# GameTracker
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+This Rails application will allow you to maintain a game collection, and log individual game sessions.
 
-Things you may want to cover:
+## Installation
 
-* Ruby version
+Clone this Git repository
 
-* System dependencies
+Then execute:
 
-* Configuration
+    $ bundle install
 
-* Database creation
+Launch the local host with:
 
-* Database initialization
+    $ rails s
 
-* How to run the test suite
+And navigate your browser to localhost:3000 as instructed.
 
-* Services (job queues, cache servers, search engines, etc.)
+## Contributing
 
-* Deployment instructions
+Bug reports and pull requests are welcome on GitHub at https://github.com/jonschacter/rails-game-tracker
 
-* ...
+## License
+
+The application is available as open source under the terms of the [MIT License](https://opensource.org/licenses/MIT).
